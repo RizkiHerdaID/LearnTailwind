@@ -11,8 +11,10 @@
                         d="M213 10l66 134 148 21-107 104 25 147-132-69-132 69 26-147L0 165l147-21z" /></svg>
             </span>
             <span class="ml-1">{{ $movie['vote_average'] * 10 . '%'}}</span>
+            @isset($movie['release_date'])
             <span class="mx-2">|</span>
             <span>{{ \Carbon\Carbon::parse($movie['release_date'])->format('M d, Y') }}</span>
+            @endisset
         </div>
         <div class="text-gray-400 text-sm">@foreach ($movie['genre_ids'] as $genre){{ $genres->get($genre) }}@if(!$loop->last),@endif @endforeach</div>
     </div>
